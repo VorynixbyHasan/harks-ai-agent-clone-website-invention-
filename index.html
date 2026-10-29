@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lumen &amp; Co. Event Agency</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" />
+<style>
+:root{--paper:#F3EFEB;--ink:#1E1E1E;--ink-20:rgba(30,30,30,.2);--ink-60:rgba(30,30,30,.74);--lime:#E0FF98;--purple:#8072FF;--lilac:#BFB8FF;--sky:#D1F3F5;--peach:#FFDDC4;--lime-soft:#F7FFDC;--pad:1.6rem;--ease:cubic-bezier(.165,.84,.44,1);--serif:"Instrument Serif",Georgia,serif;--sans:"Inter Tight",system-ui,sans-serif;--sec:8rem}
+html{font-size:2.6667vw}
+@media(min-width:768px){html{font-size:1.3021vw}:root{--pad:2.4rem}}
+@media(min-width:1200px){html{font-size:.5208vw}:root{--pad:3.2rem;--sec:16rem}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:300 max(1.6rem,14px)/1.4 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.label{font-size:max(1.3rem,12px);text-transform:uppercase;letter-spacing:.024rem;font-weight:400}
+.h2{font-size:3.6rem;line-height:.9;letter-spacing:-.15rem;font-weight:500}
+@media(min-width:768px){.h2{font-size:5rem}}
+.line{display:block;overflow:hidden;padding-bottom:.08em}.line>span{display:block}
+.pill{display:inline-flex;align-items:center;gap:.8rem;height:max(4.4rem,46px);padding:0 2rem;border-radius:999px;background:var(--lime);color:var(--ink);font-size:max(1.4rem,13px);font-weight:500;transition:background .4s var(--ease)}
+.pill:hover{background:var(--ink);color:var(--lime)}
+.round{width:4.8rem;height:4.8rem;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;transition:background .4s var(--ease),color .4s var(--ease)}
+.round:hover{background:var(--ink);color:var(--paper)}
+.round svg{width:1.6rem;height:1.6rem}
+:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+
+/* loader */
+.loader{position:fixed;inset:0;z-index:100;background:var(--ink);color:var(--lime);display:flex;flex-direction:column;justify-content:space-between;padding:var(--pad);transition:transform .9s var(--ease);animation:lfail 0s 3s forwards}
+.loader.done{transform:translateY(-100%)}
+.loader__mark{font:400 4.8rem/1 var(--serif)}
+.loader__count{font:400 12rem/.9 var(--serif);align-self:flex-end;font-variant-numeric:tabular-nums}
+.x-curtain{position:fixed;inset:0;z-index:95;background:var(--ink);border-top:2px solid var(--lime);pointer-events:none;display:none;transition:transform .9s cubic-bezier(.165,.84,.44,1);animation:lfail 0s 4s forwards}
+.js .x-curtain{display:block}
+.x-curtain.out{transform:translateY(-100%)}
+@media(prefers-reduced-motion:reduce){.js .x-curtain{display:none}}
+@keyframes lfail{to{transform:translateY(-100%);visibility:hidden}}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.2rem;padding:1.2rem var(--pad);color:var(--ink);background:transparent;border-bottom:1px solid transparent;transition:color .4s var(--ease),background .4s var(--ease),border-color .4s var(--ease)}
+.hdr.solid{background:var(--paper);border-bottom-color:var(--ink-20)}
+.hdr.on-img:not(.solid),.hdr.open{color:var(--paper)}
+.hdr.open{background:var(--ink);border-bottom-color:transparent;transition:background 0s .25s,color .3s var(--ease) .05s,border-color 0s}
+.menu-btn{grid-column:1;grid-row:1;justify-self:start;position:relative;z-index:60;display:inline-flex;align-items:center;gap:1rem;height:max(4.4rem,46px);padding:0 1.8rem 0 1.6rem;border-radius:999px;border:1px solid currentColor;font-size:max(1.4rem,13px);font-weight:500;transition:background .4s var(--ease),color .4s var(--ease)}
+.menu-btn:hover{background:var(--ink);color:var(--paper)}
+.hdr.open .menu-btn:hover,.hdr.on-img:not(.solid) .menu-btn:hover{background:var(--paper);color:var(--ink)}
+.menu-btn__icon{position:relative;display:block;width:max(1.8rem,16px);height:1.2rem}
+.menu-btn__icon i{position:absolute;left:0;right:0;top:50%;height:1.5px;margin-top:-.75px;background:currentColor;transition:transform .5s var(--ease)}
+.menu-btn__icon i:first-child{transform:translateY(-.3rem)}.menu-btn__icon i:last-child{transform:translateY(.3rem)}
+.open .menu-btn__icon i:first-child{transform:rotate(45deg)}.open .menu-btn__icon i:last-child{transform:rotate(-45deg)}
+.brand{grid-column:2;grid-row:1;justify-self:center;position:relative;z-index:60;font:400 2.4rem/1 var(--serif);display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
+.hdr__quote{grid-column:3;grid-row:1;justify-self:end;position:relative;z-index:60;padding:0 1.6rem;white-space:nowrap}
+@media(min-width:768px){.brand{font-size:3.2rem}.hdr__quote{padding:0 2rem}}
+.mmenu{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--paper);padding:12rem var(--pad) var(--pad);display:flex;flex-direction:column;justify-content:space-between;clip-path:circle(0 at var(--mx,4rem) var(--my,3.4rem));visibility:hidden;transition:clip-path .8s cubic-bezier(.165,.84,.44,1),visibility 0s .8s}
+.open .mmenu{clip-path:circle(150% at var(--mx,4rem) var(--my,3.4rem));visibility:visible;transition:clip-path .8s cubic-bezier(.165,.84,.44,1),visibility 0s}
+.mmenu nav{display:flex;flex-direction:column;border-top:1px solid rgba(243,239,235,.2)}
+.mmenu nav a{font:400 6.4rem/1.1 var(--serif);padding:.8rem 0;border-bottom:1px solid rgba(243,239,235,.2)}
+.mmenu nav a:hover{color:var(--lime);font-style:italic}
+.mmenu nav a,.mmenu>.pill{opacity:0;transform:translateY(100%);transition:transform .8s var(--ease),opacity .6s var(--ease),color .3s}
+.open .mmenu nav a,.open .mmenu>.pill{opacity:1;transform:none}
+.open .mmenu nav a:nth-child(1){transition-delay:.18s}.open .mmenu nav a:nth-child(2){transition-delay:.24s}.open .mmenu nav a:nth-child(3){transition-delay:.3s}.open .mmenu nav a:nth-child(4){transition-delay:.36s}.open .mmenu nav a:nth-child(5){transition-delay:.42s}.open .mmenu>.pill{transition-delay:.5s}
+
+/* hero */
+.hero{position:relative;padding:calc(max(4.4rem,46px) + 2.4rem + 3.2rem) var(--pad) var(--pad);overflow:hidden;display:flex;flex-direction:column;min-height:100svh;background:var(--paper);--hgap:2rem}
+.hero__copy{position:relative;z-index:1;text-align:center;max-width:150rem;margin:0 auto}
+.x-beams{position:absolute;inset:-25%;z-index:0;pointer-events:none}
+.x-beam{position:absolute;inset:0;background:rgba(128,114,255,.75);will-change:transform}
+.x-beam--a{clip-path:polygon(82% 15.5%,85% 18%,34% 100%,8% 100%);transform-origin:83% 17%}
+.x-beam--b{clip-path:polygon(15% 81.5%,18% 85%,92% 0%,66% 0%);transform-origin:17% 83%}
+.hero__box{flex:1 1 auto;width:88%;min-height:24rem;align-self:center}
+.x-hcard-wrap{position:absolute;z-index:2;inset:1.6rem 1.6rem calc(max(4.8rem,44px) + 3.2rem);display:grid;place-items:center;pointer-events:none}
+.x-hcard{background:var(--ink);color:var(--paper);border-radius:2rem;padding:2rem 2.4rem;max-width:min(100%,56rem);max-height:100%;overflow:auto;text-align:center;font:400 2.4rem/1.1 var(--serif);letter-spacing:-.02em}
+.hero .hero__sub{position:relative;z-index:1;text-align:center;margin:var(--hgap) auto 0}
+.hero.x-anim .hero__sub{margin-top:auto}
+.hero.x-anim .hero__box{position:absolute;left:0;right:0;margin:0 auto;z-index:3}
+@media(min-width:768px){.hero__box{width:60%}.x-hcard{font-size:3.2rem}.x-hcard-wrap{inset:3.2rem 3.2rem calc(max(4.8rem,44px) + 6.4rem)}}
+.hero h1{font:400 6rem/.92 var(--serif);letter-spacing:-.2rem;color:var(--ink)}
+.hero h1 em{font-style:italic}
+.hero__sub{max-width:46rem;margin:2rem auto 0;color:var(--ink-60);font-size:max(1.5rem,14px)}
+.hero__box{position:relative;margin-top:var(--hgap);overflow:hidden;border-radius:2rem;background:var(--ink);color:var(--paper);z-index:3}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__box::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0) 45%);pointer-events:none}
+.hero__ctrl{position:absolute;z-index:2;left:1.6rem;right:1.6rem;bottom:1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1.6rem}
+.hero__reel{display:inline-flex;align-items:center;gap:1.2rem}
+.hero .round{color:var(--paper);min-width:44px;min-height:44px}.hero .round:hover{background:var(--paper);color:var(--ink)}
+.hero__sound{display:inline-flex;align-items:center;gap:.8rem;min-height:44px;padding:0 1.6rem;border:1px solid rgba(243,239,235,.5);border-radius:999px;color:var(--paper);transition:background .4s var(--ease),color .4s var(--ease)}
+.hero__sound:hover{background:var(--paper);color:var(--ink)}
+.hero__sound svg{width:max(1.6rem,14px);height:max(1.6rem,14px)}
+.hero__sound .on{display:none}.hero__sound[aria-pressed="true"] .on{display:block}.hero__sound[aria-pressed="true"] .off{display:none}
+@media(min-width:768px){.hero h1{font-size:9.6rem;letter-spacing:-.36rem}.hero__ctrl{left:3.2rem;right:3.2rem;bottom:3.2rem}}
+@media(min-width:1200px){.hero h1{font-size:16rem;letter-spacing:-.48rem}}
+
+/* statement */
+.sec{padding:var(--sec) var(--pad)}
+.statement{border-bottom:1px solid var(--ink-20)}
+.statement__text{max-width:140rem;margin:0 auto;text-align:center;font-size:3.2rem;line-height:1;font-weight:400;letter-spacing:-.06rem}
+.statement__text .w{display:inline}
+@media(min-width:1024px){.statement__text{font-size:5.6rem;letter-spacing:-.12rem}}
+
+/* projects */
+.proj__bar{display:flex;justify-content:space-between;align-items:center;gap:2rem;padding-bottom:2rem;margin-bottom:2.4rem;border-bottom:1px solid var(--ink-20)}
+.ctrl{display:flex;align-items:center;gap:1.2rem}
+.ctrl .count{font-size:max(1.4rem,13px);font-weight:400;min-width:6rem;text-align:center;font-variant-numeric:tabular-nums}
+.ctrl .round{min-width:44px;min-height:44px}
+.slider{position:relative;overflow:hidden;border-radius:2rem;aspect-ratio:4/5;background:var(--ink);cursor:grab;touch-action:pan-y;user-select:none}
+.slider.dragging{cursor:grabbing}
+@media(min-width:768px){.slider{aspect-ratio:16/9}}
+.pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.pimg.is-on{z-index:1}
+.pmeta{display:grid;gap:2.4rem;padding-top:2.4rem}
+@media(min-width:1024px){.pmeta{grid-template-columns:1fr 1fr;gap:var(--pad)}}
+.pstack{display:grid}.pstack>*{grid-area:1/1}
+.pmask{overflow:hidden;padding-bottom:.1em}
+.ptitle{font:400 3.6rem/1 var(--serif);letter-spacing:-.08rem;transform:translateY(110%);visibility:hidden}
+.ptitle.is-on{transform:none;visibility:visible}
+@media(min-width:768px){.ptitle{font-size:5rem;letter-spacing:-.15rem}}
+.ptags{margin-top:1.6rem;justify-items:start}
+.ptag{display:inline-flex;align-items:center;min-height:3.2rem;padding:.4rem 1.4rem;border-radius:999px;background:var(--c)}
+.ptag,.pinfo{opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s .6s}
+.ptag.is-on,.pinfo.is-on{opacity:1;visibility:visible;transition:opacity .6s var(--ease) .2s,visibility 0s}
+.pcity{font-size:max(1.4rem,13px);font-variant:all-small-caps;letter-spacing:.08rem;font-weight:400;color:var(--ink-60)}
+.pinfo p:last-child{margin-top:.8rem;font-size:max(1.8rem,15px);line-height:1.35;max-width:52rem}
+.pmeta__r .pill{margin-top:2.4rem}
+
+/* cursor */
+.cursor{position:fixed;top:0;left:0;z-index:90;width:1rem;height:1rem;margin:-.5rem 0 0 -.5rem;border-radius:50%;background:var(--ink);pointer-events:none;display:none;place-items:center;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),background .4s var(--ease)}
+.cursor span{font-size:max(1.3rem,12px);font-weight:500;text-transform:uppercase;letter-spacing:.024rem;opacity:0;transition:opacity .3s}
+.cursor.drag{width:8rem;height:8rem;margin:-4rem 0 0 -4rem;background:var(--lime)}
+.cursor.drag span{opacity:1}
+@media(hover:hover) and (pointer:fine){.cursor{display:grid}}
+
+/* services */
+.head2{margin-bottom:4rem}.head2 .label{display:block;margin-bottom:1.6rem}
+.x-sp{display:grid;gap:0}
+.x-sp__panel{position:sticky;top:0;min-height:100svh;border-radius:2rem;background:var(--c);padding:2.4rem;display:flex;flex-direction:column;gap:2.4rem;overflow:hidden;transform-origin:50% 0;isolation:isolate;max-width:100%}
+.x-sp__copy{display:flex;flex-direction:column;justify-content:space-between;gap:2.4rem;min-width:0}
+.x-sp__name{font:400 6.4rem/.9 var(--serif);letter-spacing:-.04em;overflow-wrap:anywhere}
+.x-sp__info{display:grid;gap:1.6rem;justify-items:start}
+.x-sp__meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.6rem;font-size:max(1.5rem,14px);font-weight:400}
+.x-sp__desc{color:var(--ink-60);max-width:48rem;font-size:max(1.8rem,15px);line-height:1.35}
+.x-sp__media{position:relative;border-radius:2rem;overflow:hidden;aspect-ratio:1/1.05;flex:none;width:100%;max-width:56rem;align-self:center;background:rgba(30,30,30,.08);box-shadow:0 1.2rem 3.2rem rgba(30,30,30,.12)}
+.x-sp__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.x-sp__dim{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;z-index:2}
+@media(min-width:768px){.x-sp__panel{padding:3.2rem}.x-sp__name{font-size:10rem}}
+@media(min-width:1200px){.x-sp__panel{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:4rem}.x-sp__name{font-size:14rem}.x-sp__media{max-width:min(100%,calc((100svh - 8rem)/1.05));justify-self:center}}
+
+/* marquee */
+.mq{overflow:hidden;padding:4rem 0;border-block:1px solid var(--ink-20)}
+.mq__track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.mq__set{display:flex;align-items:center;font:italic 400 6rem/1.1 var(--serif);white-space:nowrap}
+.mq__set i{width:1.2rem;height:1.2rem;border-radius:50%;background:var(--lime);margin:0 3.2rem;flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* client marquee */
+.x-cl{overflow:hidden;padding-left:0;padding-right:0}
+.x-cl__label{text-align:center;margin-bottom:4rem;color:var(--ink-60);padding:0 var(--pad)}
+.x-cl__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.x-cl__row{overflow:hidden;padding:.8rem 0}
+.x-cl__track{display:flex;width:max-content;animation:xcl 45s linear infinite}
+.x-cl__row--rev .x-cl__track{animation-direction:reverse}
+.x-cl__row:hover .x-cl__track{animation-play-state:paused}
+.x-cl__set{display:flex;align-items:center;white-space:nowrap;font:500 2.4rem/1.2 var(--sans);letter-spacing:-.06em}
+.x-cl__set span{padding:0 2.4rem;color:rgba(30,30,30,.55);transition:color .4s var(--ease)}
+.x-cl__set span:hover{color:var(--ink)}
+@media(min-width:768px){.x-cl__set{font-size:4rem}.x-cl__set span{padding:0 4rem}}
+@keyframes xcl{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.x-cl__track{animation:none!important}.x-cl__row{overflow-x:auto}}
+
+/* photo strip */
+.x-ps{overflow:hidden;padding:0 0 var(--sec)}
+.x-ps__label{text-align:center;margin-bottom:4rem;color:var(--ink-60);padding:0 var(--pad)}
+.x-ps__row{overflow:hidden}
+.x-ps__track{display:flex;width:max-content;animation:xps 70s linear infinite}
+.x-ps__row:hover .x-ps__track{animation-play-state:paused}
+.x-ps__set{display:flex;gap:1.6rem;padding-right:1.6rem}
+.x-ps__set img{flex:none;height:20rem;width:auto;aspect-ratio:3/2;object-fit:cover;border-radius:2rem}
+@media(min-width:768px){.x-ps__set img{height:32rem}}
+@keyframes xps{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.x-ps__track{animation:none!important}.x-ps__row{overflow-x:auto}}
+/* cta */
+.pill--ink{background:var(--ink);color:var(--lime)}.pill--ink:hover{background:var(--paper);color:var(--ink)}
+/* text roll */
+.roll{display:inline-block;position:relative;overflow:hidden;vertical-align:top;line-height:1.25}
+.roll>span{display:block;transition:transform .6s var(--ease)}
+.roll::after{content:attr(data-t);position:absolute;left:0;top:100%;white-space:nowrap;transition:transform .6s var(--ease)}
+a:hover .roll>span,a:hover .roll::after,a:focus-visible .roll>span,a:focus-visible .roll::after{transform:translateY(-100%)}
+.x-cta{position:relative;margin:var(--pad);border-radius:2rem;overflow:hidden;background:var(--ink);color:var(--paper);min-height:80svh;display:grid;place-items:center;text-align:center;padding:12rem var(--pad)}
+.x-cta__bg{position:absolute;left:0;right:0;top:-25%;height:150%;width:100%;object-fit:cover;opacity:.3;will-change:transform;pointer-events:none}
+.x-cta__in{position:relative;display:grid;justify-items:center;gap:3.2rem}
+.x-cta h2{font:400 7.2rem/.9 var(--serif);letter-spacing:-.2rem;color:var(--lime)}
+.x-cta p{font-size:max(1.6rem,14px);max-width:44rem;color:var(--paper)}
+.x-cta .pill:hover{background:var(--lime);color:var(--ink)}
+@media(min-width:768px){.x-cta h2{font-size:11rem}}
+@media(min-width:1200px){.x-cta h2{font-size:16rem;letter-spacing:-.4rem}}
+
+/* footer */
+.foot{min-height:100svh;background:var(--ink);color:var(--paper);padding:8rem var(--pad) var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:6.4rem}
+.foot__top{display:grid;gap:4.8rem}
+.foot__brand{display:grid;gap:1.2rem}
+.foot__logo{font:400 2.8rem/1 var(--serif);color:var(--lime);justify-self:start;min-height:44px;display:inline-flex;align-items:center}
+.foot__addr{font-style:normal;color:rgba(243,239,235,.7);max-width:32rem}
+.foot__head{font:400 3.6rem/.95 var(--serif);letter-spacing:-.1rem;max-width:90rem}
+@media(min-width:768px){.foot__head{font-size:5.6rem}}
+.foot__cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:80rem}
+.foot__cols .label{color:rgba(243,239,235,.7);margin-bottom:1.6rem}
+.foot__cols ul{list-style:none;display:grid}
+.foot__cols a{font-size:2rem;min-height:44px;display:flex;align-items:center}
+.foot__cols a:hover{color:var(--lime)}
+.foot{justify-content:flex-start}
+.foot__top{flex:1 0 auto}
+.foot__mark{position:relative;overflow:hidden;width:100%;margin:0;padding:0}
+.foot__word{display:block;width:max-content;max-width:none;font:400 20vw/1 var(--serif);letter-spacing:-.02em;white-space:nowrap;color:var(--lime);padding-bottom:.04em}
+.foot__small{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;color:rgba(243,239,235,.7);border-top:1px solid rgba(243,239,235,.2);padding-top:1.6rem;margin:0}
+.foot__small a{min-height:44px;display:inline-flex;align-items:center}.foot__small a:hover{color:var(--lime)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}.slide__media img{transform:none}.mq__track{animation:none}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader" aria-hidden="true"><p class="loader__mark">Lumen &amp; Co.</p><p class="loader__count" id="lcount">0</p></div>
+<div class="x-curtain" id="curtain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span>Drag</span></div>
+
+<header class="hdr" id="hdr">
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mmenu"><span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span><span id="menuLabel">menu</span></button>
+  <a class="brand" href="#top">Lumen &amp; Co.</a>
+  <a class="pill hdr__quote" href="#contact">Get a quote</a>
+  <div class="mmenu" id="mmenu">
+    <nav aria-label="Main"><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#insights">Insights</a><a href="#contact">Contact</a></nav>
+    <a class="pill" href="#contact" style="display:inline-flex;align-self:flex-start">Get a quote</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="x-beams" aria-hidden="true"><span class="x-beam x-beam--a"></span><span class="x-beam x-beam--b"></span></div>
+    <div class="hero__copy">
+      <h1 class="reveal"><span class="line"><span>Built for the</span></span><span class="line"><span><em>moment</em> that matters</span></span></h1>
+    </div>
+    <div class="hero__box" id="heroBox">
+      <img class="hero__img" src="images/concert-hands.jpg" alt="A concert crowd with hands raised under golden stage lights" />
+      <div class="x-hcard-wrap" id="heroCard"><p class="x-hcard">Twelve months of planning. One night nobody forgets.</p></div>
+      <div class="hero__ctrl">
+        <a class="hero__reel" href="#projects"><span class="round" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3l8 5-8 5z"/></svg></span><span class="label">Showreel</span></a>
+        <button class="hero__sound label" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path class="off" d="M11 6l4 4M15 6l-4 4"/><path class="on" d="M11.5 5.5a3.5 3.5 0 010 5M13.5 3.5a6.5 6.5 0 010 9"/></svg><span id="soundLabel">Sound off</span></button>
+      </div>
+    </div>
+    <p class="hero__sub" id="heroSub">We craft venues, stands and live events that people talk about long after the lights go down.</p>
+  </section>
+
+  <section class="sec statement" id="about">
+    <p class="statement__text" id="stmt">Every detail, on purpose. We build experiences that audiences feel first and understand later, for the brands, federations and institutions that can't afford an ordinary day.</p>
+  </section>
+
+  <section class="sec proj" id="projects">
+    <div class="proj__bar">
+      <h2 class="label">Highlight projects</h2>
+      <div class="ctrl">
+        <button class="round" id="prev" type="button" aria-label="Previous project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg></button>
+        <span class="count" id="count" aria-live="polite">01 / 03</span>
+        <button class="round" id="next" type="button" aria-label="Next project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Highlight projects">
+      <img class="pimg is-on" src="images/stadium-night.jpg" alt="A floodlit stadium at night" draggable="false" />
+      <img class="pimg" src="images/expo-booth.jpg" alt="A busy trade show hall lined with brand stands" draggable="false" />
+      <img class="pimg" src="images/congress-speaker.jpg" alt="A speaker on stage in a full auditorium" draggable="false" />
+    </div>
+    <div class="pmeta">
+      <div class="pmeta__l">
+        <div class="pmask pstack">
+          <h3 class="ptitle is-on">Champions Night: a stadium turned lounge</h3>
+          <h3 class="ptitle">Nordform: the stand that stopped the aisle</h3>
+          <h3 class="ptitle">Aurora Health: four days, zero friction</h3>
+        </div>
+        <div class="pstack ptags">
+          <span class="label ptag is-on" style="--c:var(--peach)">Sports</span>
+          <span class="label ptag" style="--c:var(--lime-soft)">Exhibits</span>
+          <span class="label ptag" style="--c:var(--sky)">Congresses</span>
+        </div>
+      </div>
+      <div class="pmeta__r">
+        <div class="pstack">
+          <div class="pinfo is-on"><p class="pcity">Lisbon</p><p>3,200 VIP guests across nine hospitality spaces, built inside a working stadium in eleven days.</p></div>
+          <div class="pinfo"><p class="pcity">Milan</p><p>A 640 m² double-deck pavilion with a curved LED canopy that pulls visitors in.</p></div>
+          <div class="pinfo"><p class="pcity">Vienna</p><p>2,400 delegates, 60 sessions and a plenary hall rebuilt every night.</p></div>
+        </div>
+        <a class="pill pill--ink" href="#projects">View all work</a>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="services">
+    <div class="head2"><span class="label">(03) What we do</span><h2 class="h2 reveal"><span class="line"><span>One partner,</span></span><span class="line"><span>four disciplines</span></span></h2></div>
+    <div class="x-sp">
+      <article class="x-sp__panel" style="--c:var(--lilac)">
+        <div class="x-sp__copy">
+          <h3 class="x-sp__name">Events</h3>
+          <div class="x-sp__info">
+            <p class="x-sp__meta"><span class="label">01</span><span>Global events · Brand activations · Content</span></p>
+            <p class="x-sp__desc">From leadership summits to launch nights, we design the moments people film, share and keep talking about.</p>
+            <a class="pill pill--ink" href="#projects">See what we create</a>
+          </div>
+        </div>
+        <div class="x-sp__media"><img src="images/club-crowd.jpg" alt="An event crowd dancing under pink light" loading="lazy" /></div>
+        <span class="x-sp__dim" aria-hidden="true"></span>
+      </article>
+      <article class="x-sp__panel" style="--c:var(--lime-soft)">
+        <div class="x-sp__copy">
+          <h3 class="x-sp__name">Exhibits</h3>
+          <div class="x-sp__info">
+            <p class="x-sp__meta"><span class="label">02</span><span>Trade shows · Roadshows · Pavilions</span></p>
+            <p class="x-sp__desc">Modular brand spaces that make a crowded hall feel like your own room.</p>
+            <a class="pill pill--ink" href="#projects">See what we create</a>
+          </div>
+        </div>
+        <div class="x-sp__media"><img src="images/expo-booth.jpg" alt="Brand stands on a busy trade show floor" loading="lazy" /></div>
+        <span class="x-sp__dim" aria-hidden="true"></span>
+      </article>
+      <article class="x-sp__panel" style="--c:var(--sky)">
+        <div class="x-sp__copy">
+          <h3 class="x-sp__name">Congresses</h3>
+          <div class="x-sp__info">
+            <p class="x-sp__meta"><span class="label">03</span><span>Medical congresses · Internal meetings · Destination management</span></p>
+            <p class="x-sp__desc">High-stakes gatherings run like clockwork, so speakers shine and delegates never queue.</p>
+            <a class="pill pill--ink" href="#projects">See what we create</a>
+          </div>
+        </div>
+        <div class="x-sp__media"><img src="images/congress-speaker.jpg" alt="A speaker addressing a congress auditorium" loading="lazy" /></div>
+        <span class="x-sp__dim" aria-hidden="true"></span>
+      </article>
+      <article class="x-sp__panel" style="--c:var(--peach)">
+        <div class="x-sp__copy">
+          <h3 class="x-sp__name">Sports</h3>
+          <div class="x-sp__info">
+            <p class="x-sp__meta"><span class="label">04</span><span>Hospitality · Fan zones · Venue transformation</span></p>
+            <p class="x-sp__desc">We turn concourses and car parks into VIP worlds for finals and season openers.</p>
+            <a class="pill pill--ink" href="#projects">See what we create</a>
+          </div>
+        </div>
+        <div class="x-sp__media"><img src="images/stadium-night.jpg" alt="A stadium lit up for a night match" loading="lazy" /></div>
+        <span class="x-sp__dim" aria-hidden="true"></span>
+      </article>
+    </div>
+  </section>
+
+  <div class="mq" role="marquee" aria-label="Federations, Global brands, Pharma, Tech, Automotive, Institutions">
+    <div class="mq__track" aria-hidden="true">
+      <p class="mq__set">Federations<i></i>Global brands<i></i>Pharma<i></i>Tech<i></i>Automotive<i></i>Institutions<i></i></p>
+      <p class="mq__set">Federations<i></i>Global brands<i></i>Pharma<i></i>Tech<i></i>Automotive<i></i>Institutions<i></i></p>
+    </div>
+  </div>
+
+  <section class="sec x-cl" id="insights" aria-labelledby="clLabel">
+    <p class="label x-cl__label" id="clLabel">Proud to work alongside</p>
+    <ul class="x-cl__sr">
+      <li>Northwind</li><li>Halcyon Air</li><li>Veridia Pharma</li><li>Kestrel Sports</li><li>Orbis Tech</li><li>Marlow Bank</li><li>Solenne</li><li>Atlas Federation</li><li>Brightline</li><li>Corvid Labs</li>
+    </ul>
+    <div class="x-cl__row" aria-hidden="true">
+      <div class="x-cl__track">
+        <p class="x-cl__set"><span>Northwind</span><span>Halcyon Air</span><span>Veridia Pharma</span><span>Kestrel Sports</span><span>Orbis Tech</span></p>
+        <p class="x-cl__set"><span>Northwind</span><span>Halcyon Air</span><span>Veridia Pharma</span><span>Kestrel Sports</span><span>Orbis Tech</span></p>
+      </div>
+    </div>
+    <div class="x-cl__row x-cl__row--rev" aria-hidden="true">
+      <div class="x-cl__track">
+        <p class="x-cl__set"><span>Marlow Bank</span><span>Solenne</span><span>Atlas Federation</span><span>Brightline</span><span>Corvid Labs</span></p>
+        <p class="x-cl__set"><span>Marlow Bank</span><span>Solenne</span><span>Atlas Federation</span><span>Brightline</span><span>Corvid Labs</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="x-ps" aria-labelledby="psLabel">
+    <p class="label x-ps__label" id="psLabel">Moments we've built</p>
+    <div class="x-ps__row">
+      <div class="x-ps__track">
+        <div class="x-ps__set">
+          <img src="images/festival-crowd.jpg" alt="A festival crowd in front of the main stage" width="1280" height="853" loading="lazy" />
+          <img src="images/stadium-fireworks.jpg" alt="Fireworks over a packed stadium" width="1800" height="1200" loading="lazy" />
+          <img src="images/club-crowd.jpg" alt="A crowd under pink event lighting" width="1800" height="1200" loading="lazy" />
+          <img src="images/concert-blue.jpg" alt="An arena washed in blue light" width="1800" height="1200" loading="lazy" />
+          <img src="images/expo-booth.jpg" alt="A trade show hall full of stands" width="1800" height="1200" loading="lazy" />
+        </div>
+        <div class="x-ps__set" aria-hidden="true">
+          <img src="images/festival-crowd.jpg" alt="" width="1280" height="853" loading="lazy" />
+          <img src="images/stadium-fireworks.jpg" alt="" width="1800" height="1200" loading="lazy" />
+          <img src="images/club-crowd.jpg" alt="" width="1800" height="1200" loading="lazy" />
+          <img src="images/concert-blue.jpg" alt="" width="1800" height="1200" loading="lazy" />
+          <img src="images/expo-booth.jpg" alt="" width="1800" height="1200" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="x-cta" id="contact">
+    <img class="x-cta__bg" id="ctaBg" src="images/concert-blue.jpg" alt="" />
+    <div class="x-cta__in">
+      <h2 class="reveal"><span class="line"><span>Your next <em>moment</em></span></span><span class="line"><span>starts here</span></span></h2>
+      <p>Tell us the date, the city and the feeling you want guests to leave with.</p>
+      <a class="pill" href="mailto:hello@lumenco.studio"><span class="roll" data-t="Get a quote"><span>Get a quote</span></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__top">
+    <div class="foot__brand">
+      <a class="foot__logo" href="#top">Lumen &amp; Co.</a>
+      <address class="foot__addr">Lumen &amp; Co. Studio, Carrer de la Llum 12, 08005 Barcelona</address>
+    </div>
+    <h2 class="foot__head">Let's make something unforgettable</h2>
+    <div class="foot__cols">
+      <div><p class="label">Explore</p><ul>
+        <li><a href="#about"><span class="roll" data-t="About"><span>About</span></span></a></li>
+        <li><a href="#services"><span class="roll" data-t="Events"><span>Events</span></span></a></li>
+        <li><a href="#services"><span class="roll" data-t="Exhibits"><span>Exhibits</span></span></a></li>
+        <li><a href="#services"><span class="roll" data-t="Congresses"><span>Congresses</span></span></a></li>
+        <li><a href="#services"><span class="roll" data-t="Sports"><span>Sports</span></span></a></li>
+        <li><a href="#projects"><span class="roll" data-t="Projects"><span>Projects</span></span></a></li>
+        <li><a href="#contact"><span class="roll" data-t="Contact"><span>Contact</span></span></a></li>
+      </ul></div>
+      <div><p class="label">Connect</p><ul>
+        <li><a href="https://instagram.com" target="_blank" rel="noopener"><span class="roll" data-t="Instagram"><span>Instagram</span></span></a></li>
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener"><span class="roll" data-t="LinkedIn"><span>LinkedIn</span></span></a></li>
+        <li><a href="https://vimeo.com" target="_blank" rel="noopener"><span class="roll" data-t="Vimeo"><span>Vimeo</span></span></a></li>
+        <li><a href="mailto:hello@lumenco.studio"><span class="roll" data-t="hello@lumenco.studio"><span>hello@lumenco.studio</span></span></a></li>
+      </ul></div>
+    </div>
+  </div>
+  <p class="label foot__small"><a href="#top">Privacy</a><span aria-hidden="true">·</span><a href="#top">Cookies</a><span aria-hidden="true">·</span><span>© 2026 Lumen &amp; Co. Portfolio concept by Hasan Zai, design study after iventions.com</span></p>
+  <div class="foot__mark" id="footMark"><span class="foot__word" id="footWord">Lumen &amp; Co.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+var RM=matchMedia("(prefers-reduced-motion: reduce)").matches,$=function(s){return document.querySelector(s)};
+/* loader */
+var L=$("#loader"),C=$("#lcount"),CT=$("#curtain"),t0=performance.now(),D=RM?1:1000;
+(function tick(n){var p=Math.min(1,(n-t0)/D);C.textContent=Math.round(p*100);if(p<1)requestAnimationFrame(tick);else{L.classList.add("done");setTimeout(function(){CT.style.animation="none";CT.classList.add("out")},RM?0:250);setTimeout(intro,200)}})(t0);
+/* header */
+var H=$("#hdr"),B=$("#menuBtn"),BL=$("#menuLabel"),M=$("#mmenu"),AB=$("#about");
+function setO(o){H.classList.toggle("open",o);B.setAttribute("aria-expanded",o);BL.textContent=o?"close":"menu";if(lenis)o?lenis.stop():lenis.start()}
+B.onclick=function(){var r=B.getBoundingClientRect();M.style.setProperty("--mx",(r.left+r.width/2)+"px");M.style.setProperty("--my",(r.top+r.height/2)+"px");setO(!H.classList.contains("open"))};
+document.querySelectorAll(".mmenu a").forEach(function(a){a.addEventListener("click",function(){setO(false)})});
+addEventListener("keydown",function(e){if(e.key==="Escape"&&H.classList.contains("open")){setO(false);B.focus()}});
+var SB=$("#soundBtn");SB.onclick=function(){var on=SB.getAttribute("aria-pressed")!=="true";SB.setAttribute("aria-pressed",on);$("#soundLabel").textContent=on?"Sound on":"Sound off"};
+function onS(){H.classList.toggle("solid",AB.getBoundingClientRect().top<=H.offsetHeight)}addEventListener("scroll",onS,{passive:true});onS();
+/* lenis + gsap */
+var lenis=null,G=window.gsap,ST=window.ScrollTrigger;
+if(!RM&&window.Lenis){lenis=new Lenis({duration:1.1});document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var h=a.getAttribute("href"),el=h.length>1&&document.querySelector(h);if(el){e.preventDefault();lenis.scrollTo(el,{offset:-60})}})});
+ if(G&&ST){lenis.on("scroll",ST.update);G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0)}else{(function r(t){lenis.raf(t);requestAnimationFrame(r)})(0)}}
+/* page transition */
+if(!RM){var busy=false;
+ document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+  var h=a.getAttribute("href"),el=h.length>1&&document.querySelector(h);if(!el)return;
+  e.preventDefault();e.stopPropagation();if(busy)return;busy=true;
+  CT.style.animation="none";CT.style.transition="none";CT.classList.remove("out");CT.style.transform="translateY(100%)";CT.offsetWidth;
+  CT.style.transition="";CT.style.transform="translateY(0)";
+  setTimeout(function(){
+   if(H.classList.contains("open"))setO(false);
+   if(lenis)lenis.scrollTo(el,{offset:h==="#top"?0:-60,immediate:true,force:true});else scrollTo(0,el.getBoundingClientRect().top+scrollY-(h==="#top"?0:60));
+   if(ST)ST.update();onS();
+   setTimeout(function(){CT.style.transform="";CT.classList.add("out");setTimeout(function(){busy=false},900)},150);
+  },900);
+ },true);
+}
+var E="power3.out";
+function intro(){
+ if(!G||RM)return;
+ G.from(".hero h1 .line>span",{yPercent:110,duration:1.2,stagger:.1,ease:E});
+ G.from(".hero__sub,.hero__ctrl",{opacity:0,y:20,duration:1,delay:.3,ease:E});
+}
+if(G&&ST&&!RM){
+ G.registerPlugin(ST);
+ var HE=$("#hero"),HB=$("#heroBox"),HC=$(".hero__copy"),HS=$("#heroSub"),HK=$("#heroCard");
+ HE.classList.add("x-anim");
+ var hPad=function(){return parseFloat(getComputedStyle(HE).paddingBottom)||0};
+ var hGap=function(){return parseFloat(getComputedStyle(document.documentElement).fontSize)*2};
+ var hBot=function(){return hPad()+HS.offsetHeight+hGap()};
+ var hFrom=function(){return Math.max(180,HE.clientHeight-(HC.offsetTop+HC.offsetHeight)-hBot()-hGap())};
+ var hW=function(){return innerWidth<768?"88%":"60%"};
+ var HT=G.timeline({scrollTrigger:{trigger:HE,start:"top top",end:"+=100%",pin:true,scrub:true,invalidateOnRefresh:true,onUpdate:function(s){H.classList.toggle("on-img",s.progress>.85)}}});
+ HT.fromTo(HB,{width:hW,height:hFrom,bottom:hBot,borderRadius:"2rem"},{width:"100%",height:"100%",bottom:0,borderRadius:0,ease:"none",duration:1},0)
+   .to(HK,{opacity:0,ease:"none",duration:.35},0)
+   .to(HS,{opacity:0,ease:"none",duration:.3},0)
+   .to(HC,{opacity:0,ease:"none",duration:.3},.6)
+   .fromTo(".x-beam--a",{rotation:0},{rotation:-6,ease:"none",duration:1},0)
+   .fromTo(".x-beam--b",{rotation:0},{rotation:6,ease:"none",duration:1},0);
+ document.querySelectorAll("section:not(.hero) .reveal").forEach(function(h){G.from(h.querySelectorAll(".line>span"),{yPercent:110,duration:1.1,stagger:.08,ease:E,scrollTrigger:{trigger:h,start:"top 85%"}})});
+ var SW=$("#stmt");SW.innerHTML=SW.textContent.trim().split(/\s+/).map(function(w){return '<span class="w">'+w+'</span>'}).join(" ");
+ G.fromTo(SW.querySelectorAll(".w"),{opacity:.2},{opacity:1,ease:"none",stagger:.1,scrollTrigger:{trigger:SW,start:"top 85%",end:"bottom 40%",scrub:true}});
+ var SP=document.querySelectorAll(".x-sp__panel");
+ SP.forEach(function(p,i){
+  var m=p.querySelector(".x-sp__media"),im=m.querySelector("img");
+  G.fromTo(m,{clipPath:"inset(100% 0% 0% 0% round 2rem)"},{clipPath:"inset(0% 0% 0% 0% round 2rem)",duration:1.3,ease:"power4.inOut",scrollTrigger:{trigger:p,start:"top 75%",once:true}});
+  G.fromTo(im,{scale:1.25},{scale:1,duration:1.6,ease:E,scrollTrigger:{trigger:p,start:"top 75%",once:true}});
+  var nx=SP[i+1];if(!nx)return;
+  var tl=G.timeline({scrollTrigger:{trigger:nx,start:"top bottom",end:"top top",scrub:true}});
+  tl.to(p,{scale:.92,ease:"none"},0).to(p.querySelector(".x-sp__dim"),{opacity:.18,ease:"none"},0);
+ });
+ var CB=$("#ctaBg");G.fromTo(CB,{y:function(){return -.25*CB.offsetHeight}},{y:function(){return .25*CB.offsetHeight},ease:"none",scrollTrigger:{trigger:"#contact",start:"top bottom",end:"bottom top",scrub:true,invalidateOnRefresh:true}});
+ G.from("#footWord",{yPercent:100,ease:"none",scrollTrigger:{trigger:".foot__mark",start:"top bottom",end:"bottom bottom",scrub:true}});
+}
+/* fit footer wordmark to its row; stick tall service panels by their bottom edge so nothing clips */
+var FM=$("#footMark"),FW=$("#footWord");
+function fit(){
+ FW.style.fontSize="100px";var w=FW.getBoundingClientRect().width,cw=FM.clientWidth;
+ if(w&&cw)FW.style.fontSize=(100*cw/w*.98).toFixed(2)+"px";
+ document.querySelectorAll(".x-sp__panel").forEach(function(p){p.style.top=Math.min(0,innerHeight-p.offsetHeight)+"px"});
+ if(ST)ST.refresh();
+}
+fit();addEventListener("resize",fit);addEventListener("load",fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+/* slider */
+var S=$("#slider"),IM=S.querySelectorAll(".pimg"),TI=document.querySelectorAll(".ptitle"),TG=document.querySelectorAll(".ptag"),IN=document.querySelectorAll(".pinfo"),N=IM.length,idx=0,z=1,sx=0,drag=false,moved=0,PE="cubic-bezier(.165,.84,.44,1)";
+IM[0].style.zIndex=z;
+function go(i){
+ var n=(i+N)%N;if(n===idx)return;var o=idx;idx=n;
+ var ni=IM[n];ni.style.transition="none";ni.style.clipPath="inset(0 0 0 100%)";ni.style.zIndex=++z;ni.offsetWidth;
+ ni.style.transition=RM?"none":"clip-path .9s "+PE;ni.style.clipPath="inset(0)";
+ var ot=TI[o],nt=TI[n];
+ nt.style.transition="none";nt.style.transform="translateY(110%)";nt.style.visibility="visible";nt.offsetWidth;
+ var tr=RM?"none":"transform .9s "+PE;nt.style.transition=tr;nt.style.transform="translateY(0)";
+ ot.style.transition=tr;ot.style.transform="translateY(-110%)";
+ setTimeout(function(){if(idx!==o)ot.style.visibility="hidden"},RM?0:900);
+ TI.forEach(function(t,k){t.classList.toggle("is-on",k===n);t.setAttribute("aria-hidden",k!==n)});
+ [TG,IN].forEach(function(L){L.forEach(function(el,k){el.classList.toggle("is-on",k===n);el.setAttribute("aria-hidden",k!==n)})});
+ $("#count").textContent="0"+(n+1)+" / 0"+N}
+TI.forEach(function(t,k){if(k)t.setAttribute("aria-hidden","true")});[TG,IN].forEach(function(L){L.forEach(function(el,k){if(k)el.setAttribute("aria-hidden","true")})});
+$("#prev").onclick=function(){go(idx-1)};$("#next").onclick=function(){go(idx+1)};
+S.addEventListener("pointerdown",function(e){drag=true;moved=0;sx=e.clientX;S.classList.add("dragging");S.setPointerCapture(e.pointerId)});
+S.addEventListener("pointermove",function(e){if(drag)moved=e.clientX-sx});
+function end(){if(!drag)return;drag=false;S.classList.remove("dragging");if(Math.abs(moved)>50)go(idx+(moved<0?1:-1))}
+S.addEventListener("pointerup",end);S.addEventListener("pointercancel",end);
+S.tabIndex=0;S.addEventListener("keydown",function(e){if(e.key==="ArrowRight")go(idx+1);if(e.key==="ArrowLeft")go(idx-1)});
+/* cursor */
+var K=$("#cursor");
+if(matchMedia("(hover:hover) and (pointer:fine)").matches){var cx=0,cy=0,kx=0,ky=0;addEventListener("pointermove",function(e){cx=e.clientX;cy=e.clientY});
+ (function m(){kx+=(cx-kx)*(RM?1:.2);ky+=(cy-ky)*(RM?1:.2);K.style.transform="translate("+kx+"px,"+ky+"px)";requestAnimationFrame(m)})();
+ S.addEventListener("pointerenter",function(){K.classList.add("drag")});S.addEventListener("pointerleave",function(){K.classList.add("x");K.classList.remove("drag")});}
+})();
+</script>
+</body>
+</html>
